@@ -5,29 +5,32 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
-  name: 'GMap',
+  name: "GMap",
   data() {
     return {
       lat: 48,
       lng: 2
-    }
+    };
   },
   methods: {
     renderMap() {
-      const map =new google.maps.Map(document.getElementById('map'), {
+      const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: this.lat, lng: this.lng },
         zoom: 6,
         maxZoom: 15,
         minZoom: 3,
         streetViewControl: false
-      })
+      });
     }
   },
   mounted() {
-    this.renderMap()
+    this.renderMap();
+    console.log(firebase.auth().currentUser);
   }
-}
+};
 </script>
 
 <style>
