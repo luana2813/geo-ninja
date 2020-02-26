@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <nav class="deep-purple darken-1">
+    <nav class=" orange darken-3">
       <div class="container">
         <a href="" class="brand-logo left">Geo Ninjas!</a>
         <ul class="right">
