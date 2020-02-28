@@ -10,7 +10,7 @@
         <label for="password">Password:</label>
         <input type="password" v-model="password" />
       </div>
-      <p v-if="feedback" class="red-text">{{ this.feedback }}</p>
+      <p v-if="feedback" class="center red-text">{{ this.feedback }}</p>
       <div class="field center">
         <button class="btn orange darken-3">Login</button>
       </div>
@@ -36,9 +36,11 @@ export default {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then(cred => {
           console.log(cred.user)
+          this.$router.push({ name: 'GMap' })
         })
         .catch(err => {
           console.log(err)
+          this.feedback = err.message
         })
         this.feedback = null
       } else {
