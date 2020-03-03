@@ -28,7 +28,7 @@ export default {
     }
   },
   mounted() {
-    //get user geolocation
+    //get current user
     let user = firebase.auth().currentUser;
 
     //get user geolocation
