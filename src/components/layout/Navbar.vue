@@ -20,7 +20,7 @@ export default {
   name: 'Navbar',
   data() {
     return {
-      
+      user: null
     }
   },
   methods: {
@@ -29,6 +29,20 @@ export default {
         .then(() => {
           this.$router.push({ name: 'Login' })
         })
+    }
+  },
+  created() {
+    // let user = firebase.auth().currentUser
+
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        this.user = user
+      } else {
+        this.user = null
+      }
+    })
+    if(user) {
+
     }
   }
 }
