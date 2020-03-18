@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import GMap from '@/components/home/GMap'
-import Signup from '@/components/auth/Signup'
 import Login from '@/components/auth/Login'
+import Signup from '@/components/auth/Signup'
+import ViewProfile from '@/components/profile/ViewProfile'
 import firebase from 'firebase/app'
 
 Vue.use(Router)
@@ -26,6 +27,14 @@ const router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/profile/:id',
+      name: 'ViewProfile',
+      component: ViewProfile,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
@@ -33,7 +42,7 @@ const router = new Router({
 // router guards
 router.beforeEach((to, from, next) => {
   // check to see if route has auth guard
-  if(to.matched.some(rec => rec.meta.requiresAuth)){
+  if (to.matched.some(rec => rec.meta.requiresAuth)) {
     // check auth state of user
     let user = firebase.auth().currentUser
     if (user) {
